@@ -1,7 +1,7 @@
 import Header from '../components/Header';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { GoogleAuthProvider, signInWithPopup, GithubAuthProvider, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, GithubAuthProvider, signInWithEmailAndPassword, onAuthStateChanged, signOut, User } from "firebase/auth";
 import { auth,db } from "@/services/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
@@ -12,7 +12,8 @@ export default function Home() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [posts, setPosts] = useState<{ id: string; [key: string]: any }[]>([]);
-
+    const [userInfo, setUserInfo] = useState<User | null>(null);
+  
     useEffect(() => {
         const fetchPosts = async () => {
           const querySnapshot = await getDocs(collection(db, "posts"));
@@ -25,7 +26,8 @@ export default function Home() {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
-                setIsLoggedIn(true);
+              setIsLoggedIn(true);
+              setUserInfo(user)
             } else {
                 setIsLoggedIn(false);
             }
@@ -123,8 +125,8 @@ export default function Home() {
                                 ))}
                             </ul>
                         </div>
-                        <div className="w-1/6 p-4 border-l border-gray-200">
-                            ooo님 안녕하세요!
+              <div className="w-1/6 p-4 border-l border-gray-200">
+                  {userInfo && <p>{userInfo.displayName}님 안녕하세요!</p>}
                             <button
                                 onClick={logout}
                                 className="bg-red-500 text-white px-4 py-2 rounded-md mt-4"
