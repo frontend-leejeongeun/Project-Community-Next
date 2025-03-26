@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/services/firebase';
 import { useRouter } from 'next/navigation';
+import Header from "../components/Header";
 
 export default function SignupPage() {
     const [email, setEmail] = useState('');
@@ -38,7 +39,9 @@ export default function SignupPage() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen">
+        <>
+            <Header />
+            <div className="flex flex-col items-center justify-center min-h-screen">
             <h1 className="text-xl font-bold mb-4">회원가입</h1>
             <form onSubmit={handleSignup} className="flex flex-col">
                 <input
@@ -64,5 +67,7 @@ export default function SignupPage() {
             </form>
             {error && <p className="text-red-500 mt-2">{error}</p>}
         </div>
+        </>
+        
     );
 }

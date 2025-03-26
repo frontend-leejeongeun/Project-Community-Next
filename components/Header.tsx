@@ -6,15 +6,14 @@ export default function Header() {
     return (
         <header className="w-full bg-white shadow-md">
             <div className="container mx-auto flex justify-between items-center py-4 px-6 max-w-screen-xl">
-                <div className="flex items-center">
+                <div className="flex items-center cursor-pointer" onClick={() => router.push('/')}>
                     <img src="/logo.png" alt="Logo" className="h-8" />
                 </div>
-                <div className="flex-grow mx-4">
-                    <input
-                        type="text"
-                        placeholder="Search..."
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-gray-500 focus:outline-none"
-                    />
+                <div
+                    className="flex-grow mx-4 text-3xl font-bold cursor-pointer"
+                    onClick={() => router.push('/')}
+                >
+                    COMMUNITY
                 </div>
                 <div className="flex space-x-4">
                     <button
@@ -28,4 +27,3 @@ export default function Header() {
         </header>
     );
 }
-

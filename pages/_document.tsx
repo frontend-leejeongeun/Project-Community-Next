@@ -1,13 +1,19 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
-    return (
-        <Html lang="en">
-            <Head />
-            <body className="antialiased">
-                <Main />
-                <NextScript />
-            </body>
-        </Html>
-    );
+  return (
+    <Html lang="ko">
+      <Head>
+        {/* Pretendard 웹폰트 CDN */}  
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css"
+        />
+      </Head>
+      <body className="font-sans antialiased">
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
 }
