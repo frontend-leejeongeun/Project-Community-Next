@@ -19,7 +19,7 @@ export default function Header() {
                 <div className="flex space-x-4">
                     <button
                         onClick={() => router.push('/signup')}
-                        className="bg-green-500 text-white px-4 py-2 rounded-md"
+                        className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-sm"
                     >
                         회원가입
                     </button>
@@ -28,3 +28,4 @@ export default function Header() {
         </header>
     );
 }
+

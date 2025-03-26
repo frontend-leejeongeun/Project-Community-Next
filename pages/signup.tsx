@@ -25,11 +25,11 @@ export default function SignupPage() {
             alert(`회원가입 성공! 이메일: ${userCredential.user.email}`);
 
             // 회원가입 후 로그인 페이지로 이동
-            router.push('/login');
+            router.push('/');
         } catch (error: any) {
             if (error.code === 'auth/email-already-in-use') {
                 alert('이미 가입된 이메일입니다. 로그인 페이지로 이동합니다.');
-                router.push('/login'); // 이미 가입된 이메일이면 로그인 페이지로 이동
+                router.push('/'); // 이미 가입된 이메일이면 로그인 페이지로 이동
             } else {
                 console.error('회원가입 실패:', error);
                 setError(error.message);
