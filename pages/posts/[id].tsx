@@ -217,63 +217,63 @@ export default function PostDetailPage() {
   };
 
     return (
-      <>
-    <Header/>
-    <div className="max-w-screen-xl mx-auto p-4">
-      {error && <p className="text-red-500">{error}</p>}
-      {!post ? (
-        <p>게시글을 불러오는 중...</p>
-      ) : (
-        <>
-          <h1 className="text-2xl font-bold mb-2">{post.title}</h1>
-          <p className="text-gray-600 text-sm mb-4">
-            작성자: {post.authorEmail || "익명"} / {post.createdAt?.toDate?.().toLocaleString() || "작성일자 없음"}
-          </p>
-          <div className="whitespace-pre-wrap mb-6">{post.content}</div>
+    <>
+      <Header/>
+      <div className="max-w-screen-xl mx-auto p-4">
+        {error && <p className="text-red-500">{error}</p>}
+        {!post ? (
+          <p>게시글을 불러오는 중...</p>
+        ) : (
+          <>
+            <h1 className="text-2xl font-bold mb-2">{post.title}</h1>
+            <p className="text-gray-600 text-sm mb-4">
+              작성자: {post.authorEmail || "익명"} / 작성일: {post.createdAt?.toDate?.().toLocaleString() || "작성일자 없음"}
+            </p>
+            <div className="whitespace-pre-wrap mb-6">{post.content}</div>
 
-          {user?.uid === post.authorId && (
-            <div className="flex gap-2 mb-6">
-              <Link href={`/posts/${post.id}/edit`}>
-                <button className="bg-yellow-500 text-white px-4 py-2 rounded-md">수정</button>
-              </Link>
-              <button
-                onClick={handleDelete}
-                className="bg-red-500 text-white px-4 py-2 rounded-md"
-              >
-                삭제
-              </button>
-            </div>
-          )}
+            {user?.uid === post.authorId && (
+              <div className="flex gap-2 mb-6">
+                <Link href={`/posts/${post.id}/edit`}>
+                  <button className="bg-yellow-500 text-white px-4 py-2 rounded-md">수정</button>
+                </Link>
+                <button
+                  onClick={handleDelete}
+                  className="bg-red-500 text-white px-4 py-2 rounded-md"
+                >
+                  삭제
+                </button>
+              </div>
+            )}
 
-          <hr className="my-6" />
-          <h2 className="text-lg font-bold mb-2">💬 댓글 {comments.length}개</h2>
+            <hr className="my-6" />
+            <h2 className="text-lg font-bold mb-2">💬 댓글 {comments.length}개</h2>
 
-          <ul className="mb-4 space-y-2">
-            {renderComments(null)}
-          </ul>
+            <ul className="mb-4 space-y-2">
+              {renderComments(null)}
+            </ul>
 
-          {user ? (
-            <form onSubmit={handleAddComment} className="flex flex-col space-y-2">
-              <textarea
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                placeholder="댓글을 입력하세요..."
-                className="border p-2 rounded"
-              />
-              <button
-                type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded-md self-end"
-              >
-                댓글 작성
-              </button>
-            </form>
-          ) : (
-            <p className="text-sm text-gray-500">로그인 후 댓글을 작성할 수 있습니다.</p>
-          )}
-        </>
-      )}
-    </div>
-      </>
+            {user ? (
+              <form onSubmit={handleAddComment} className="flex flex-col space-y-2">
+                <textarea
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  placeholder="댓글을 입력하세요..."
+                  className="border p-2 rounded"
+                />
+                <button
+                  type="submit"
+                  className="bg-blue-500 text-white px-4 py-2 rounded-md self-end"
+                >
+                  댓글 등록
+                </button>
+              </form>
+            ) : (
+              <p className="text-sm text-gray-500">로그인 후 댓글을 작성할 수 있습니다.</p>
+            )}
+          </>
+        )}
+      </div>
+    </>
     
   );
 }

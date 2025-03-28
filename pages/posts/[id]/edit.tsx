@@ -66,33 +66,33 @@ export default function EditPostPage() {
   };
 
   return (
-      <>
-    <Header/>
-    <div className="max-w-screen-xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">게시글 수정</h1>
-      <form onSubmit={handleUpdate} className="flex flex-col space-y-4">
-        <input
-          type="text"
-          placeholder="제목"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="border p-2"
-        />
-        <textarea
-          placeholder="내용"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          className="border p-2 h-40"
-        />
-        {error && <p className="text-red-500">{error}</p>}
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-md"
-        >
-          수정 완료
-        </button>
-      </form>
-          </div>
-          </>
+    <>
+      <Header/>
+      <div className="max-w-screen-xl mx-auto p-4">
+        <h1 className="text-2xl font-bold mb-4">게시글 수정</h1>
+        <form onSubmit={handleUpdate} className="flex flex-col space-y-4">
+          <input
+            type="text"
+            placeholder="제목"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="border p-2"
+          />
+          <textarea
+            placeholder="내용"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            className="border p-2 h-40"
+          />
+          {error && <p className="text-red-500">{error}</p>}
+          <button
+            type="submit"
+            className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          >
+            수정 완료
+          </button>
+        </form>
+      </div>
+    </>
   );
 }
