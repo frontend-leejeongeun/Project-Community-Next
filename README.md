@@ -11,12 +11,12 @@
 
 ## 사용 기술
 
--   **Next.js 15**: React 기반의 프레임워크로, 서버 사이드 렌더링(SSR)과 정적 사이트 생성(SSG)을 지원합니다. 라우팅 및 최적화된 웹 성능 제공에 강점을 가지고 있습니다.
--   **React 19**: 사용자 인터페이스를 구성하는 핵심 라이브러리입니다. 컴포넌트 기반 구조로 복잡한 UI를 효율적으로 개발할 수 있게 해줍니다.
--   **TypeScript 5**: JavaScript에 타입을 부여하여 코드의 안정성과 유지보수성을 높이는 언어입니다.
--   **Tailwind CSS 4**: 유틸리티 기반 CSS 프레임워크로, 빠르게 UI 스타일을 지정하고 반응형 디자인을 적용할 수 있습니다.
--   **Axios**: 브라우저와 Node.js에서 사용 가능한 Promise 기반의 HTTP 클라이언트로, API 서버와 통신할 때 사용됩니다.
--   **Firebase**: 인증(Authentication), 실시간 데이터베이스(Firestore), 호스팅 등 다양한 백엔드 기능을 제공하는 BaaS(Backend-as-a-Service) 플랫폼입니다.
+-   **Next.js 15**
+-   **React 19**
+-   **TypeScript 5**
+-   **Tailwind CSS 4**
+-   **Axios**
+-   **Firebase**
 
 ## 폴더 구조
 
