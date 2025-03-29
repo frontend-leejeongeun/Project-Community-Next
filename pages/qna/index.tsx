@@ -27,7 +27,7 @@ export default function QnaHome() {
   useEffect(() => {
     const fetchQnaPosts = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/qna");
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/qna`);
         setPosts(res.data);
       } catch (err) {
         console.error("Q&A 게시글 불러오기 실패:", err);

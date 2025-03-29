@@ -29,7 +29,7 @@ export default function Home() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/posts");
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/posts`);
         setPosts(response.data);
       } catch (error) {
         console.error("API 요청 실패:", error);
@@ -44,7 +44,7 @@ export default function Home() {
     const fetchCommentCounts = async () => {
       for (const post of posts) {
         try {
-          const res = await axios.get(`http://localhost:5000/api/posts/${post.id}/comments/count`);
+          const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/posts/${post.id}/comments/count`);
           setCommentCounts((prev) => ({ ...prev, [post.id]: res.data.count || 0 }));
         } catch (error) {
           console.error("댓글 개수 가져오기 실패:", error);
