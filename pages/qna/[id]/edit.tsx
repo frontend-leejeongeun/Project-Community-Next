@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter } from "next/router";
 import { useAuth } from "@/contexts/AuthContext";
 import { getQnaPostById, updateQnaPost } from "@/services/qnaApi";
 import Header from "@/components/Header";
@@ -16,7 +16,7 @@ interface QnaPost {
 export default function EditQnaPost() {
   const { user } = useAuth();
   const router = useRouter();
-  const { id } = useParams() as { id: string };
+  const { id } = router.query;
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -25,7 +25,7 @@ export default function EditQnaPost() {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!user) return; // 🔑 user 없을 때는 실행하지 않음
+      if (!user || typeof id !== "string") return;
 
       try {
         const post = await getQnaPostById(id) as QnaPost | null;
@@ -49,7 +49,9 @@ export default function EditQnaPost() {
       }
     };
 
-    if (id && user) fetchData(); // 🔑 user가 있을 때만 fetch
+    if (user && typeof id === "string") {
+      fetchData();
+    }
   }, [id, user]);
 
   const handleUpdate = async (e: React.FormEvent) => {
@@ -59,6 +61,7 @@ export default function EditQnaPost() {
       return;
     }
     try {
+      if (typeof id !== "string") return;
       await updateQnaPost(id, { title, content });
       alert("수정 완료!");
       router.push(`/qna/${id}`);
@@ -100,6 +103,5 @@ export default function EditQnaPost() {
         </form>
       </div>      
     </>
-
   );
 }
