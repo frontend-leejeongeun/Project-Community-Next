@@ -5,9 +5,9 @@
 이 프로젝트는 Next.js와 Firebase를 기반으로 구축된 커뮤니티 클라이언트입니다.  
 자유게시판과 Q&A 게시판 기능을 제공하며, Firebase Authentication을 활용한 로그인 기능을 포함하고 있습니다.
 
--   자유게시판: 게시글 검색, 조회, 작성, 댓글 수 확인
+-   게시판(자유게시판, Q&A게시판): 게시글 조회, 작성, 수정, 삭제, 댓글, 대댓글 기능
 -   로그인: Firebase 기반 인증 (Google, GitHub, Email 등)
--   Q&A: 질문 등록 및 목록 조회 (기능 확장 예정)
+-   검색: 게시글 검색, 검색 텍스트 하이라이팅
 
 ## 사용 기술
 
@@ -40,9 +40,7 @@ CAFE-PLATFORM
 │   └── qnaApi.ts
 ├── styles/                 # 글로벌 스타일
 │   └── globals.css
-├── .env.local              # Firebase 환경 변수 설정
 ├── package.json
-├── README.md
 └── ...
 ```
 
