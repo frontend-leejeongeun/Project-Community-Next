@@ -68,18 +68,32 @@ export default function Home() {
 
     useEffect(() => {
         const fetchCommentCounts = async () => {
-            for (const post of posts) {
-                try {
-                    const res = await axios.get(
-                        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/posts/${post.id}/comments/count`
-                    );
-                    setCommentCounts((prev) => ({
-                        ...prev,
-                        [post.id]: res.data.count || 0,
-                    }));
-                } catch (error) {
-                    console.error('댓글 개수 가져오기 실패:', error);
-                }
+            try {
+                const results = await Promise.all(
+                    posts.map(async (post) => {
+                        try {
+                            const res = await axios.get(
+                                `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/posts/${post.id}/comments/count`
+                            );
+                            return {
+                                postId: post.id,
+                                count: res.data.count || 0,
+                            };
+                        } catch (error) {
+                            console.error('댓글 개수 가져오기 실패:', error);
+                            return { postId: post.id, count: 0 }; // 실패해도 기본값 반환
+                        }
+                    })
+                );
+
+                const counts: { [postId: string]: number } = {};
+                results.forEach(({ postId, count }) => {
+                    counts[postId] = count;
+                });
+
+                setCommentCounts(counts); // 한 번만 상태 업데이트
+            } catch (error) {
+                console.error('댓글 개수 전체 요청 실패:', error);
             }
         };
 
