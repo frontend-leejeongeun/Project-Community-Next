@@ -1,12 +1,11 @@
-/* styles/global.css */
-
+@import 'tailwindcss';
 @font-face {
     font-family: 'Pretendard';
-    src: url('/fonts/PretendardVariable.woff2') format('woff2-variations');
+    src: url('../public/fonts/PretendardVariable.woff2')
+        format('woff2-variations');
     font-weight: 45 920;
     font-display: swap;
 }
-
 :root {
     --background: #ffffff;
     --foreground: #171717;
@@ -15,7 +14,7 @@
 @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
-    --font-sans: var(--font-geist-sans); /* 사용 안 하면 제거해도 OK */
+    --font-sans: var(--font-geist-sans);
     --font-mono: var(--font-geist-mono);
 }
 
@@ -29,5 +28,5 @@
 body {
     background: var(--background);
     color: var(--foreground);
-    font-family: 'Pretendard', sans-serif;
+    font-family: 'Pretendard Variable', sans-serif;
 }
